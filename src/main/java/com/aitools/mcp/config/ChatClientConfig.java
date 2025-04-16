@@ -15,7 +15,7 @@ public class ChatClientConfig {
 
     @Bean
 //    @Primary // 标记为优先注入
-    public ToolCallbackProvider taskTools(TaskMcpCallServerServices taskMcpCallServerServices) {
+    public MethodToolCallbackProvider taskTools(TaskMcpCallServerServices taskMcpCallServerServices) {
         return MethodToolCallbackProvider.builder().toolObjects(taskMcpCallServerServices).build();
     }
 //    @Bean
