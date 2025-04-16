@@ -51,8 +51,19 @@ public class ChatController {
                 ))
                 .values()
                 .toArray(ToolCallback[]::new);
+        //
         ChatClient chatClient = ChatClient.builder(openAiChatModel)
                 .defaultTools(merged)
+                /**增强顾问（Advisors）SimpleLoggerAdvisor​​：
+                 功能：记录用户请求内容和模型响应日志。
+                 参数说明：
+                 AdvisedRequest::userText：提取用户输入的原始文本。
+                 ChatResponse::toString：将模型响应转换为日志字符串。
+                 0：日志输出级别
+                 MessageChatMemoryAdvisor：
+                 功能：维护对话记忆上下文，实现多轮对话能力。
+                 InMemoryChatMemory：使用内存存储对话历史（网页6）
+                 **/
                 .defaultAdvisors(new SimpleLoggerAdvisor(AdvisedRequest::userText, ChatResponse::toString, 0))
                 .defaultAdvisors(new MessageChatMemoryAdvisor(new InMemoryChatMemory()))
                 .build();
