@@ -1,5 +1,5 @@
 # 代码介绍和启动方式说明
-##1. springboot ai创建mcp client
+## 1. springboot ai创建mcp client
 
    `````
    1.调用AI查询使用那个call
@@ -1130,7 +1130,7 @@
    }
    `````
 
- ###出参示例
+ ### 出参示例
 
    ``````
    {
@@ -1209,13 +1209,13 @@
 
 
 
-##2.本地启动
+## 2.本地启动
 
 ``````
  sudo java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005  mcp-0.0.1-SNAPSHOT.jar
 ``````
 
-##3.调用
+## 3.调用
 
 ```````
 http://localhost:8080/chat/github?input=%E6%9F%A5%E8%AF%A2chaozai0304%E6%89%80%E6%9C%89%E9%A1%B9
