@@ -40,20 +40,20 @@ public class ChatController {
 
     @GetMapping("/github")
     public String call(@RequestParam String input){
-        ToolCallback[] a = syncMcpToolCallbackProvider.getToolCallbacks();
-        ToolCallback[] b = toolCallbackProvider.getToolCallbacks();
-        ToolCallback[] merged = Stream.of(a, b)
-                .flatMap(Arrays::stream)
-                .collect(Collectors.toMap(
-                        ToolCallback::getToolDefinition,
-                        Function.identity(),
-                        (existing, replacement) -> existing // 保留先出现的工具
-                ))
-                .values()
-                .toArray(ToolCallback[]::new);
+//        ToolCallback[] a = syncMcpToolCallbackProvider.getToolCallbacks();
+//        ToolCallback[] b = toolCallbackProvider.getToolCallbacks();
+//        ToolCallback[] merged = Stream.of(a, b)
+//                .flatMap(Arrays::stream)
+//                .collect(Collectors.toMap(
+//                        ToolCallback::getToolDefinition,
+//                        Function.identity(),
+//                        (existing, replacement) -> existing // 保留先出现的工具
+//                ))
+//                .values()
+//                .toArray(ToolCallback[]::new);
         //
         ChatClient chatClient = ChatClient.builder(openAiChatModel)
-                .defaultTools(merged)
+                .defaultTools(syncMcpToolCallbackProvider,toolCallbackProvider)
                 /**增强顾问（Advisors）SimpleLoggerAdvisor​​：
                  功能：记录用户请求内容和模型响应日志。
                  参数说明：
