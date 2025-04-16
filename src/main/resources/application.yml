@@ -1,0 +1,37 @@
+logging:
+  level:
+    io:
+      modelcontextprotocol:
+        client: DEBUG
+        spec: DEBUG
+
+spring:
+  application:
+    name: mcp
+  ai:
+    openai:
+      api-key: XXXXXX
+      base-url: http://XXXXX
+      chat:
+        options:
+          model: gpt-4o
+    mcp:
+      server:
+        stdio: true
+      client:
+        type: SYNC
+        toolcallback:
+          enabled: true
+        enabled: true
+        request-timeout: 30s
+        #stdio:
+        # servers-configuration: classpath:mcp-servers-config.json
+        stdio:
+          connections:
+            github-server:
+              command: /usr/local/bin/npx
+              args:
+                - "-y"
+                - "@modelcontextprotocol/server-github"
+              env:
+                "GITHUB_PERSONAL_ACCESS_TOKEN": "XXXXXXXXX"
