@@ -51,7 +51,6 @@ public class ChatController {
 //                ))
 //                .values()
 //                .toArray(ToolCallback[]::new);
-        //
         ChatClient chatClient = ChatClient.builder(openAiChatModel)
                 .defaultTools(syncMcpToolCallbackProvider,toolCallbackProvider)
                 /**增强顾问（Advisors）SimpleLoggerAdvisor​​：
